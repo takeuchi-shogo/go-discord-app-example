@@ -6,7 +6,11 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
-func New(c Config) *redis.Client {
+type RedisClient interface {
+	redis.Cmdable
+}
+
+func New(c Config) RedisClient {
 	r := redis.NewClient(&redis.Options{
 		Addr: fmt.Sprintf("%s:%s", c.Host, c.Port),
 	})

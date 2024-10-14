@@ -9,6 +9,7 @@ import (
 	"syscall"
 
 	"github.com/redis/go-redis/v9"
+	"github.com/takeuchi-shogo/go-worker-scheduler-app-example/backend/pkg/worker"
 )
 
 type Worker struct {
@@ -26,6 +27,7 @@ func New() *Worker {
 }
 
 func (w *Worker) Start(ctx context.Context) {
+	worker.New()
 	pubsub := w.redisClient.Subscribe(ctx, "test-tasks")
 	defer pubsub.Close()
 
@@ -53,10 +55,10 @@ func (w *Worker) processTask(taskJSON string) {
 }
 
 func NewWorker() {
-	worker := New()
+	w := New()
 	ctx, cancel := context.WithCancel(context.Background())
 
-	go worker.Start(ctx)
+	go w.Start(ctx)
 
 	// シグナルを待ち受けるチャネルを作成
 	sigCh := make(chan os.Signal, 1)

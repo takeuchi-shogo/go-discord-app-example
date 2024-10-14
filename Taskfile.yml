@@ -1,0 +1,19 @@
+version: '3'
+
+tasks:
+  server:
+    cmds:
+      - cd backend && air -c .air.api.toml
+
+  worker:
+    cmds:
+      - cd backend && air -c .air.worker.toml
+
+  run:
+    cmds:
+      - task: server
+      - task: worker
+
+  docker:up:
+    cmds:
+      - docker compose up -d
