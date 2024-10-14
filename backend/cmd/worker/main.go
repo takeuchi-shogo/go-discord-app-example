@@ -1,6 +1,6 @@
 package main
 
-import api "github.com/takeuchi-shogo/go-discord-app/backend/service/api/runner"
+import api "github.com/takeuchi-shogo/go-worker-scheduler-app-example/backend/internal/api/runner"
 
 func main() {
 	api.NewWorker()

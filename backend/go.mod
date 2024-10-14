@@ -1,4 +1,4 @@
-module github.com/takeuchi-shogo/go-discord-app/backend
+module github.com/takeuchi-shogo/go-worker-scheduler-app-example/backend
 
 go 1.21.6
 
