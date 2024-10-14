@@ -1,7 +1,7 @@
 services:
 
   redis:
-    container_name: go-discord-app-redis
+    container_name: go-worker-scheduler-app-example-redis
     image: redis:6.2
     ports:
       - "6379:6379"
